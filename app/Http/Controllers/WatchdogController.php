@@ -100,6 +100,8 @@ class WatchdogController extends Controller {
     {
       $data = $this->readFromPost($request);
 
+      //dd($data);
+
       for($i=0; $i<=sizeof($data); $i++)
       {
         $finalData = array(
@@ -111,7 +113,8 @@ class WatchdogController extends Controller {
 
       $fb = $firebase->firebaseCreate($data[0], $finalData);
 
-      dd($fb);
+      return $fb;
+      //return $fb;
     }
 
 

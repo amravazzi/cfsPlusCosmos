@@ -10,11 +10,6 @@
 |
 */
 
-// This is the default welcome page. You could change this to anything.
-$app->get('/', function () use ($app) {
-    return $app->welcome();
-});
-
 // Firebase get data
 $app->get('/v1/data/root', 'FirebaseController@firebaseRoot');
 $app->get('/v1/data/{path}/index', 'FirebaseController@firebaseIndex');
