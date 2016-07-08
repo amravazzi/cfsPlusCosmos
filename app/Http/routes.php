@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -16,15 +15,13 @@ $app->get('/', function () use ($app) {
     return $app->welcome();
 });
 
-// These don't do anything at the moment -- see if you can fix that ;)
-$app->get('/users', 'UsersController@index');
-$app->get('/users/{id}', 'UsersController@show');
-$app->get('/users/{id}/checkins', 'UsersController@getCheckins');
+// Firebase get data
+$app->get('/v1/data/root', 'FirebaseController@firebaseRoot');
+$app->get('/v1/data/{path}/index', 'FirebaseController@firebaseIndex');
 
-// Some of these work, some of these don't -- see if you can fix that too!
-$app->get('/places', 'PlacesController@index');
-$app->post('/places', 'PlacesController@create');
-$app->put('/places', 'PlacesController@update');
-$app->get('/places/{id}', 'PlacesController@show');
-$app->delete('/places/{id}', 'PlacesController@destroy');
-$app->get('/places/{id}/checkins', 'PlacesController@getCheckins');
+// Firebase watchdog
+$app->get('/v1/data/watch', 'watchdogController@');
+
+$app->get('/v1/watchdog/{path:[a-zA-Z0-9\-\/]+}', 'watchdogController@readFromTxt');
+
+$app->post('/posts', 'watchdogController@setContentOnFirebase');
