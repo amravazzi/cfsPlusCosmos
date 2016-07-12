@@ -14,9 +14,6 @@
 $app->get('/v1/data/root', 'FirebaseController@firebaseRoot');
 $app->get('/v1/data/{path}/index', 'FirebaseController@firebaseIndex');
 
-// Firebase watchdog
-$app->get('/v1/data/watch', 'watchdogController@');
-
 $app->get('/v1/watchdog/{path:[a-zA-Z0-9\-\/]+}', 'watchdogController@readFromTxt');
 
 $app->post('/posts', 'watchdogController@setContentOnFirebase');

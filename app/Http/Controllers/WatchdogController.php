@@ -86,10 +86,6 @@ class WatchdogController extends Controller {
         $serializedContent[1] = null;
         $serializedContent[2] = null;
 
-
-        // $serializedContentFinal[$i] = array_values(array_filter($serializedContent[$i]));
-        // $serializedContentFinal[$i][3] = "false";
-
         $serializedContentFinal = array_values(array_filter($serializedContent));
         $serializedContentFinal[3] = "false";
 
